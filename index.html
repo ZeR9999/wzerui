@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>电选 · 全品类电器导购与选型平台</title>
+<meta name="description" content="电选——覆盖家用、商用、工业全品类电器的导购与选型平台，按需求找设备，从选购到询价一站搞定。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f7f8fa;--card:#ffffff;--text:#0f172a;--text2:#64748b;--line:#e2e8f0;
+  --accent:#2563eb;--accent2:#0ea5e9;--soft:#eff6ff;--radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#0b1220;--card:#111a2e;--text:#e2e8f0;--text2:#94a3b8;--line:#1e293b;--soft:#13213c;--accent:#60a5fa;--accent2:#38bdf8}
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* ============ 导航 ============ */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+@media (prefers-color-scheme: dark){.nav{background:rgba(11,18,32,.82)}}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px}
+.logo b{font-size:18px;font-weight:800;letter-spacing:-.2px}
+.logo small{display:block;font-size:10.5px;color:var(--text2);font-weight:500;letter-spacing:.4px}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:9px 18px;font-size:13.5px;font-weight:600;cursor:pointer;transition:opacity .2s,transform .15s}
+.nav-cta:hover{opacity:.9}
+.nav-cta:active{transform:scale(.97)}
+@media (max-width:720px){.nav-links{display:none}}
+
+/* ============ Hero ============ */
+.hero{padding:70px 0 54px;background:radial-gradient(900px 380px at 18% 0%,var(--soft),transparent 65%);border-bottom:1px solid var(--line)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12.5px;color:var(--text2);font-weight:500}
+.hero h1{font-size:clamp(32px,5vw,48px);line-height:1.15;letter-spacing:-.8px;margin:20px 0 14px;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{font-size:16px;color:var(--text2);max-width:640px}
+.search{display:flex;gap:8px;max-width:640px;margin:28px 0 14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:0 10px 34px rgba(15,23,42,.07)}
+.search input{flex:1;border:none;outline:none;font-size:15px;padding:10px 14px;background:transparent;color:var(--text);font-family:inherit}
+.search button{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:0 22px;font-size:14.5px;font-weight:600;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+.search button:hover{opacity:.9}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.tag{padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text2);font-size:13px;cursor:pointer;transition:all .2s;font-family:inherit}
+.tag:hover{border-color:var(--accent);color:var(--accent);background:var(--soft)}
+.hero-stats{display:flex;gap:36px;margin-top:36px;flex-wrap:wrap}
+.stat b{display:block;font-size:22px;letter-spacing:-.3px}
+.stat span{font-size:12.5px;color:var(--text2)}
+
+/* ============ 通用区块 ============ */
+section{padding:54px 0}
+.sec-head{margin-bottom:26px}
+.kicker{font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.6px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(24px,3.4vw,30px);letter-spacing:-.4px;margin-top:6px}
+.sec-head p{color:var(--text2);margin-top:8px;font-size:14.5px;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,23,42,.08);border-color:#cbd5e1}
+.card .icon{width:46px;height:46px;border-radius:12px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:14px}
+.card h3{font-size:17px;letter-spacing:-.2px;margin-bottom:8px}
+.card p{color:var(--text2);font-size:14px;line-height:1.65}
+.card .more{display:inline-block;margin-top:14px;font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none}
+.card .more:hover{text-decoration:underline}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{font-size:12px;color:var(--text2);background:var(--soft);border-radius:6px;padding:3px 9px}
+
+/* ============ 攻略卡片 ============ */
+.guide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
+.guide:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,23,42,.08)}
+.guide .g-tag{display:inline-flex;align-self:flex-start;font-size:11.5px;font-weight:600;color:var(--accent);background:var(--soft);border-radius:6px;padding:3px 10px}
+.guide h3{font-size:16px;line-height:1.45;margin:12px 0 8px;letter-spacing:-.2px}
+.guide p{color:var(--text2);font-size:13.5px;flex:1}
+.guide .meta{margin-top:14px;font-size:12px;color:var(--text2);display:flex;justify-content:space-between}
+.guide .meta a{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* ============ 询价表单 ============ */
+.contact-box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media (max-width:820px){.contact-box{grid-template-columns:1fr;gap:26px;padding:26px}}
+.contact-box h2{font-size:26px;letter-spacing:-.4px;margin-bottom:10px}
+.contact-box .lead{color:var(--text2);font-size:14.5px;margin-bottom:20px}
+.contact-list{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text2)}
+.contact-list li{display:flex;gap:10px;align-items:flex-start}
+.contact-list .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0}
+.field{margin-bottom:14px}
+.field label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;color:var(--text2)}
+.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:14px;font-family:inherit;background:var(--card);color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .2s,transform .15s}
+.btn:hover{opacity:.92}
+.btn:active{transform:scale(.99)}
+.form-note{font-size:12px;color:var(--text2);margin-top:10px;text-align:center}
+
+/* ============ 页脚 ============ */
+footer{background:#0f172a;color:#cbd5e1;padding:44px 0 28px;margin-top:30px}
+footer .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px}
+@media (max-width:700px){footer .foot-grid{grid-template-columns:1fr}}
+footer h4{font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:12px}
+footer a{color:#94a3b8;text-decoration:none;font-size:13.5px;display:block;margin-bottom:8px;transition:color .2s}
+footer a:hover{color:#e2e8f0}
+.foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.foot-brand .logo-mark{width:32px;height:32px;font-size:16px}
+.foot-brand b{font-size:16px;color:#fff}
+footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
+.foot-bottom{margin-top:30px;padding-top:18px;border-top:1px solid #1e293b;font-size:12.5px;color:#64748b;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* ============ Toast ============ */
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:all .3s ease;z-index:99;box-shadow:0 12px 30px rgba(0,0,0,.25);max-width:90vw}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<!-- ============ 导航 ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark">⚡</span>
+      <span><b>电选</b><small>全品类电器导购与选型平台</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#audience">人群入口</a>
+      <a href="#categories">品类导航</a>
+      <a href="#guides">选型攻略</a>
+      <a href="#contact">需求咨询</a>
+    </nav>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">免费咨询</button>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">🏭 家用 · 商用 · 工业 全品类覆盖</span>
+    <h1>按需求找设备<br><em>选型不再靠猜</em></h1>
+    <p>不知道买什么、参数看不懂、品牌挑花眼？告诉我们你的场景和预算——从个人家用到工厂车间，一站找到合适的电器设备。</p>
+
+    <form class="search" id="searchForm" autocomplete="off">
+      <input id="searchInput" type="text" placeholder="你的场景是？比如：200 平餐厅后厨制冷设备" aria-label="搜索场景">
+      <button type="submit">帮我选型</button>
+    </form>
+
+    <div class="tags">
+      <button class="tag" type="button">车间降温</button>
+      <button class="tag" type="button">餐厅后厨</button>
+      <button class="tag" type="button">户外活动供电</button>
+      <button class="tag" type="button">空气能热水</button>
+      <button class="tag" type="button">商用净水</button>
+      <button class="tag" type="button">配电设备</button>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><b>3</b><span>大使用场景板块</span></div>
+      <div class="stat"><b>20+</b><span>覆盖品类</span></div>
+      <div class="stat"><b>持续更新</b><span>选型内容与产品库</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 人群入口 ============ -->
+<section id="audience">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Start here</div>
+      <h2>你是哪一类买家？</h2>
+      <p>不同的人，选型逻辑完全不同。先选人群，再看对应的需求清单。</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🏠</div>
+        <h3>个人用户</h3>
+        <p>家装家电、热水采暖、净水、空气能……按户型、面积和预算，挑到性价比最高的方案。</p>
+        <a class="more" href="#categories">查看家用品类 →</a>
+      </div>
+      <div class="card">
+        <div class="icon">🏭</div>
+        <h3>工厂老板</h3>
+        <p>车间降温、配电、空压、电机……按工况、功率和电费账，选对能省下真金白银的设备。</p>
+        <a class="more" href="#categories">查看工业品类 →</a>
+      </div>
+      <div class="card">
+        <div class="icon">🎪</div>
+        <h3>活动承包商</h3>
+        <p>户外供电、音响灯光、临时冷暖……按场地、时长和负载，配出一套不掉链子的方案。</p>
+        <a class="more" href="#categories">查看商用品类 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 品类导航 ============ -->
+<section id="categories" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Categories</div>
+      <h2>品类导航</h2>
+      <p>覆盖家用、商用、工业三大板块，每个品类的选型攻略与参数对比陆续上线。</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📺</div>
+        <h3>家用电器</h3>
+        <p>买房装修、旧机换新，按面积和预算一步到位。</p>
+        <div class="chips">
+          <span class="chip">空调</span><span class="chip">冰箱</span><span class="chip">洗衣机</span>
+          <span class="chip">热水器</span><span class="chip">净水器</span><span class="chip">小家电</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">🏪</div>
+        <h3>商用设备</h3>
+        <p>开店、办厂、做餐饮，设备选对了生意才省心。</p>
+        <div class="chips">
+          <span class="chip">商用空调</span><span class="chip">冷柜</span><span class="chip">后厨设备</span>
+          <span class="chip">商用水泵</span><span class="chip">商用净水</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">⚙️</div>
+        <h3>工业设备</h3>
+        <p>车间、厂房、工地，按工况和功率配齐。</p>
+        <div class="chips">
+          <span class="chip">工业风扇</span><span class="chip">空压机</span><span class="chip">配电箱</span>
+          <span class="chip">电机变频</span><span class="chip">应急电源</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 选型攻略 ============ -->
+<section id="guides">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Guides</div>
+      <h2>选型攻略</h2>
+      <p>用大白话讲清楚参数和取舍，帮你避开商家的营销话术。</p>
+    </div>
+    <div class="grid">
+      <article class="guide">
+        <span class="g-tag">工业</span>
+        <h3>车间降温怎么选：工业大风扇 vs 环保空调 vs 蒸发冷</h3>
+        <p>3000 平车间、10 米层高，三种方案的造价、电费和体感差在哪？</p>
+        <div class="meta"><span>8 分钟</span><a href="#">阅读全文 →</a></div>
+      </article>
+      <article class="guide">
+        <span class="g-tag">商用</span>
+        <h3>200 平餐厅后厨制冷设备清单（含预算）</h3>
+        <p>冷柜、工作台、制冰机怎么配？按人流量算容量，不花冤枉钱。</p>
+        <div class="meta"><span>6 分钟</span><a href="#">阅读全文 →</a></div>
+      </article>
+      <article class="guide">
+        <span class="g-tag">商用</span>
+        <h3>户外活动 8 小时供电：发电机 vs 储能电源</h3>
+        <p>音响、灯光、冷饮柜的功率怎么算？备电方案的选择思路。</p>
+        <div class="meta"><span>7 分钟</span><a href="#">阅读全文 →</a></div>
+      </article>
+      <article class="guide">
+        <span class="g-tag">家用</span>
+        <h3>空气能热泵选型：看懂这 5 个参数就够了</h3>
+        <p>匹数、COP、水箱容积、工况温度、噪音——商家不会主动讲的那些事。</p>
+        <div class="meta"><span>5 分钟</span><a href="#">阅读全文 →</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 需求咨询 ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>找不到合适的？直接说需求</h2>
+        <p class="lead">告诉我们场景、面积/功率和预算，我们帮你匹配方案——后续会接入经销商网络，由本地服务商报价。</p>
+        <ul class="contact-list">
+          <li><span class="dot"></span>家用采购：按房间、预算出清单</li>
+          <li><span class="dot"></span>商用/工业：按工况、功率出方案</li>
+          <li><span class="dot"></span>活动承包商：按场地、时长配设备</li>
+        </ul>
+      </div>
+      <form id="inqForm" autocomplete="off">
+        <div class="field">
+          <label for="name">你的称呼</label>
+          <input id="name" type="text" placeholder="比如：王老板 / 李女士" required>
+        </div>
+        <div class="field">
+          <label for="phone">手机或微信</label>
+          <input id="phone" type="text" placeholder="方便我们联系你" required>
+        </div>
+        <div class="field">
+          <label for="need">需求描述</label>
+          <textarea id="need" rows="3" placeholder="比如：5000 平厂房车间太热，想降温，预算 3 万以内" required></textarea>
+        </div>
+        <button class="btn" type="submit">提交需求</button>
+        <p class="form-note">演示版本 · 正式上线后接入后端与经销商网络</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><span class="logo-mark">⚡</span><b>电选</b></div>
+        <p class="desc">覆盖家用、商用、工业全品类电器的导购与选型平台。按需求找设备，选型不再靠猜。</p>
+      </div>
+      <div>
+        <h4>平台</h4>
+        <a href="#audience">人群入口</a>
+        <a href="#categories">品类导航</a>
+        <a href="#guides">选型攻略</a>
+        <a href="#contact">需求咨询</a>
+      </div>
+      <div>
+        <h4>其它</h4>
+        <a href="./index.html">玩玩小游戏 · 果了个果</a>
+        <a href="#top">回到顶部</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 电选 · wzerui.com</span>
+      <span>备案号：待添加</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var toastEl = document.getElementById("toast");
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2400);
+  }
+
+  // 热门标签 → 填进搜索框
+  var input = document.getElementById("searchInput");
+  document.querySelectorAll(".tag").forEach(function (tag) {
+    tag.addEventListener("click", function () {
+      input.value = tag.textContent.trim();
+      input.focus();
+    });
+  });
+
+  // 搜索（演示版：提示 + 滚动到品类）
+  document.getElementById("searchForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    toast("选型匹配功能开发中，先下方品类看看 ↓");
+    document.getElementById("categories").scrollIntoView({ behavior: "smooth" });
+  });
+
+  // 询价表单（演示版：提示并清空）
+  document.getElementById("inqForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    toast("需求已收到（演示版，正式上线后自动分发给经销商）");
+    e.target.reset();
+  });
+})();
+</script>
+</body>
+</html>
