@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#ffffff" id="meta-theme">
 <title>电选 · 全品类电器导购与选型平台</title>
 <meta name="description" content="电选——覆盖家用、商用、工业全品类电器的导购与选型平台，按需求找设备，从选购到询价一站搞定。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="电选">
+<meta property="og:title" content="电选 · 全品类电器导购与选型平台">
+<meta property="og:description" content="覆盖家用、商用、工业全品类电器的导购与选型平台，按需求找设备，选型不再靠猜。">
+<meta property="og:url" content="https://wzerui.com/">
+<!-- 建议后续补一张 og:image（1200x630 分享图），微信/QQ 转发就能显示卡片缩略图 -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -16,16 +22,22 @@
 @media (prefers-color-scheme: dark){
   :root{--bg:#0b1220;--card:#111a2e;--text:#e2e8f0;--text2:#94a3b8;--line:#1e293b;--soft:#13213c;--accent:#60a5fa;--accent2:#38bdf8}
 }
+[data-theme="dark"]{
+  --bg:#0b1220;--card:#111a2e;--text:#e2e8f0;--text2:#94a3b8;--line:#1e293b;--soft:#13213c;--accent:#60a5fa;--accent2:#38bdf8
+}
 html{scroll-behavior:smooth}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;
 }
 .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;z-index:100;text-decoration:none;font-size:13px}
+.skip:focus{left:8px}
 
 /* ============ 导航 ============ */
 .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 @media (prefers-color-scheme: dark){.nav{background:rgba(11,18,32,.82)}}
+[data-theme="dark"] .nav{background:rgba(11,18,32,.82)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
 .logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px}
@@ -34,10 +46,20 @@ body{
 .nav-links{display:flex;gap:26px}
 .nav-links a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
 .nav-links a:hover{color:var(--accent)}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.icon-btn:active{transform:scale(.92)}
 .nav-cta{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:9px 18px;font-size:13.5px;font-weight:600;cursor:pointer;transition:opacity .2s,transform .15s}
 .nav-cta:hover{opacity:.9}
 .nav-cta:active{transform:scale(.97)}
-@media (max-width:720px){.nav-links{display:none}}
+.nav-toggle{display:none;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:17px;cursor:pointer;align-items:center;justify-content:center}
+@media (max-width:720px){
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+  .nav.open .nav-links{display:flex;position:absolute;left:0;right:0;top:64px;flex-direction:column;gap:0;background:var(--card);border-bottom:1px solid var(--line);padding:8px 22px 12px;box-shadow:0 20px 40px rgba(15,23,42,.08)}
+  .nav.open .nav-links a{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .nav.open .nav-links a:last-child{border-bottom:none}
+}
 
 /* ============ Hero ============ */
 .hero{padding:70px 0 54px;background:radial-gradient(900px 380px at 18% 0%,var(--soft),transparent 65%);border-bottom:1px solid var(--line)}
@@ -71,7 +93,8 @@ section{padding:54px 0}
 .card .more{display:inline-block;margin-top:14px;font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none}
 .card .more:hover{text-decoration:underline}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.chip{font-size:12px;color:var(--text2);background:var(--soft);border-radius:6px;padding:3px 9px}
+.chip{font-size:12px;color:var(--text2);background:var(--soft);border:1px solid transparent;border-radius:6px;padding:3px 9px;cursor:pointer;font-family:inherit;transition:all .2s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
 
 /* ============ 攻略卡片 ============ */
 .guide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
@@ -79,8 +102,8 @@ section{padding:54px 0}
 .guide .g-tag{display:inline-flex;align-self:flex-start;font-size:11.5px;font-weight:600;color:var(--accent);background:var(--soft);border-radius:6px;padding:3px 10px}
 .guide h3{font-size:16px;line-height:1.45;margin:12px 0 8px;letter-spacing:-.2px}
 .guide p{color:var(--text2);font-size:13.5px;flex:1}
-.guide .meta{margin-top:14px;font-size:12px;color:var(--text2);display:flex;justify-content:space-between}
-.guide .meta a{color:var(--accent);text-decoration:none;font-weight:600}
+.guide .meta{margin-top:14px;font-size:12px;color:var(--text2);display:flex;justify-content:space-between;align-items:center}
+.g-link{background:none;border:none;color:var(--accent);font-weight:600;font-size:12px;cursor:pointer;font-family:inherit;padding:0}
 
 /* ============ 询价表单 ============ */
 .contact-box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
@@ -101,7 +124,7 @@ section{padding:54px 0}
 
 /* ============ 页脚 ============ */
 footer{background:#0f172a;color:#cbd5e1;padding:44px 0 28px;margin-top:30px}
-footer .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px}
+footer .foot-grid{display:grid;grid-template-columns:2fr 1fr;gap:26px}
 @media (max-width:700px){footer .foot-grid{grid-template-columns:1fr}}
 footer h4{font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:12px}
 footer a{color:#94a3b8;text-decoration:none;font-size:13.5px;display:block;margin-bottom:8px;transition:color .2s}
@@ -118,6 +141,7 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">跳到主要内容</a>
 
 <!-- ============ 导航 ============ -->
 <header class="nav">
@@ -127,14 +151,21 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
       <span><b>电选</b><small>全品类电器导购与选型平台</small></span>
     </a>
     <nav class="nav-links">
+      <a href="#how">怎么帮到你</a>
       <a href="#audience">人群入口</a>
       <a href="#categories">品类导航</a>
       <a href="#guides">选型攻略</a>
       <a href="#contact">需求咨询</a>
     </nav>
-    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">免费咨询</button>
+    <div class="nav-actions">
+      <button class="icon-btn" id="btn-theme" aria-label="切换深浅色">🌙</button>
+      <button class="nav-cta" id="btn-consult">免费咨询</button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="打开菜单">☰</button>
+    </div>
   </div>
 </header>
+
+<main id="main">
 
 <!-- ============ Hero ============ -->
 <section class="hero" id="top">
@@ -161,6 +192,34 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
       <div class="stat"><b>3</b><span>大使用场景板块</span></div>
       <div class="stat"><b>20+</b><span>覆盖品类</span></div>
       <div class="stat"><b>持续更新</b><span>选型内容与产品库</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 三步流程 ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">How it works</div>
+      <h2>三步，把需求变成方案</h2>
+      <p>不需要懂参数，不需要会砍价——把专业的事交给懂行的人。</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>① 说需求</h3>
+        <p>告诉我们场景、面积/功率和预算，用大白话就行。</p>
+      </div>
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>② 看方案</h3>
+        <p>按工况给出对比清单与性价比排序，讲清楚每笔钱花在哪。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>③ 放心买</h3>
+        <p>对接本地经销商报价比价，安装售后有处找，不踩坑。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -202,7 +261,7 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
     <div class="sec-head">
       <div class="kicker">Categories</div>
       <h2>品类导航</h2>
-      <p>覆盖家用、商用、工业三大板块，每个品类的选型攻略与参数对比陆续上线。</p>
+      <p>点一下品类，填入搜索框发起选型；每个品类的攻略与参数对比陆续上线。</p>
     </div>
     <div class="grid">
       <div class="card">
@@ -210,8 +269,8 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
         <h3>家用电器</h3>
         <p>买房装修、旧机换新，按面积和预算一步到位。</p>
         <div class="chips">
-          <span class="chip">空调</span><span class="chip">冰箱</span><span class="chip">洗衣机</span>
-          <span class="chip">热水器</span><span class="chip">净水器</span><span class="chip">小家电</span>
+          <button class="chip" type="button">空调</button><button class="chip" type="button">冰箱</button><button class="chip" type="button">洗衣机</button>
+          <button class="chip" type="button">热水器</button><button class="chip" type="button">净水器</button><button class="chip" type="button">小家电</button>
         </div>
       </div>
       <div class="card">
@@ -219,8 +278,8 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
         <h3>商用设备</h3>
         <p>开店、办厂、做餐饮，设备选对了生意才省心。</p>
         <div class="chips">
-          <span class="chip">商用空调</span><span class="chip">冷柜</span><span class="chip">后厨设备</span>
-          <span class="chip">商用水泵</span><span class="chip">商用净水</span>
+          <button class="chip" type="button">商用空调</button><button class="chip" type="button">冷柜</button><button class="chip" type="button">后厨设备</button>
+          <button class="chip" type="button">商用水泵</button><button class="chip" type="button">商用净水</button>
         </div>
       </div>
       <div class="card">
@@ -228,8 +287,8 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
         <h3>工业设备</h3>
         <p>车间、厂房、工地，按工况和功率配齐。</p>
         <div class="chips">
-          <span class="chip">工业风扇</span><span class="chip">空压机</span><span class="chip">配电箱</span>
-          <span class="chip">电机变频</span><span class="chip">应急电源</span>
+          <button class="chip" type="button">工业风扇</button><button class="chip" type="button">空压机</button><button class="chip" type="button">配电箱</button>
+          <button class="chip" type="button">电机变频</button><button class="chip" type="button">应急电源</button>
         </div>
       </div>
     </div>
@@ -249,25 +308,25 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
         <span class="g-tag">工业</span>
         <h3>车间降温怎么选：工业大风扇 vs 环保空调 vs 蒸发冷</h3>
         <p>3000 平车间、10 米层高，三种方案的造价、电费和体感差在哪？</p>
-        <div class="meta"><span>8 分钟</span><a href="#">阅读全文 →</a></div>
+        <div class="meta"><span>8 分钟</span><button class="g-link" type="button">阅读全文 →</button></div>
       </article>
       <article class="guide">
         <span class="g-tag">商用</span>
         <h3>200 平餐厅后厨制冷设备清单（含预算）</h3>
         <p>冷柜、工作台、制冰机怎么配？按人流量算容量，不花冤枉钱。</p>
-        <div class="meta"><span>6 分钟</span><a href="#">阅读全文 →</a></div>
+        <div class="meta"><span>6 分钟</span><button class="g-link" type="button">阅读全文 →</button></div>
       </article>
       <article class="guide">
         <span class="g-tag">商用</span>
         <h3>户外活动 8 小时供电：发电机 vs 储能电源</h3>
         <p>音响、灯光、冷饮柜的功率怎么算？备电方案的选择思路。</p>
-        <div class="meta"><span>7 分钟</span><a href="#">阅读全文 →</a></div>
+        <div class="meta"><span>7 分钟</span><button class="g-link" type="button">阅读全文 →</button></div>
       </article>
       <article class="guide">
         <span class="g-tag">家用</span>
         <h3>空气能热泵选型：看懂这 5 个参数就够了</h3>
         <p>匹数、COP、水箱容积、工况温度、噪音——商家不会主动讲的那些事。</p>
-        <div class="meta"><span>5 分钟</span><a href="#">阅读全文 →</a></div>
+        <div class="meta"><span>5 分钟</span><button class="g-link" type="button">阅读全文 →</button></div>
       </article>
     </div>
   </div>
@@ -289,15 +348,15 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
       <form id="inqForm" autocomplete="off">
         <div class="field">
           <label for="name">你的称呼</label>
-          <input id="name" type="text" placeholder="比如：王老板 / 李女士" required>
+          <input id="name" name="name" type="text" placeholder="比如：王老板 / 李女士" required>
         </div>
         <div class="field">
           <label for="phone">手机或微信</label>
-          <input id="phone" type="text" placeholder="方便我们联系你" required>
+          <input id="phone" name="phone" type="text" placeholder="方便我们联系你" required>
         </div>
         <div class="field">
           <label for="need">需求描述</label>
-          <textarea id="need" rows="3" placeholder="比如：5000 平厂房车间太热，想降温，预算 3 万以内" required></textarea>
+          <textarea id="need" name="need" rows="3" placeholder="比如：5000 平厂房车间太热，想降温，预算 3 万以内" required></textarea>
         </div>
         <button class="btn" type="submit">提交需求</button>
         <p class="form-note">演示版本 · 正式上线后接入后端与经销商网络</p>
@@ -305,6 +364,8 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ============ 页脚 ============ -->
 <footer>
@@ -316,15 +377,11 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
       </div>
       <div>
         <h4>平台</h4>
+        <a href="#how">怎么帮到你</a>
         <a href="#audience">人群入口</a>
         <a href="#categories">品类导航</a>
         <a href="#guides">选型攻略</a>
         <a href="#contact">需求咨询</a>
-      </div>
-      <div>
-        <h4>其它</h4>
-        <a href="./index.html">玩玩小游戏 · 果了个果</a>
-        <a href="#top">回到顶部</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -340,6 +397,7 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
 (function () {
   "use strict";
 
+  /* ---------- Toast ---------- */
   var toastEl = document.getElementById("toast");
   var toastTimer = null;
   function toast(msg) {
@@ -349,8 +407,46 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
     toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2400);
   }
 
-  // 热门标签 → 填进搜索框
+  /* ---------- 主题（手动切换 + 记住选择，默认跟随系统） ---------- */
+  var root = document.documentElement;
+  function applyTheme(t) {
+    root.dataset.theme = t;
+    document.getElementById("meta-theme").setAttribute("content", t === "dark" ? "#0b1220" : "#ffffff");
+    document.getElementById("btn-theme").textContent = t === "dark" ? "☀️" : "🌙";
+  }
+  (function initTheme() {
+    var saved = localStorage.getItem("dianxuan-theme");
+    if (saved === "light" || saved === "dark") { applyTheme(saved); return; }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) applyTheme("dark");
+  })();
+  document.getElementById("btn-theme").addEventListener("click", function () {
+    var next = root.dataset.theme === "dark" ? "light" : "dark";
+    localStorage.setItem("dianxuan-theme", next);
+    applyTheme(next);
+  });
+
+  /* ---------- 移动端菜单 ---------- */
+  var nav = document.querySelector(".nav");
+  var toggle = document.getElementById("nav-toggle");
+  function closeMenu() { nav.classList.remove("open"); toggle.textContent = "☰"; }
+  toggle.addEventListener("click", function () {
+    nav.classList.toggle("open");
+    toggle.textContent = nav.classList.contains("open") ? "✕" : "☰";
+  });
+  document.querySelectorAll(".nav-links a").forEach(function (a) {
+    a.addEventListener("click", closeMenu);
+  });
+
+  /* ---------- 搜索：记录需求 → 预填表单 → 引导留联系方式 ---------- */
   var input = document.getElementById("searchInput");
+  var needEl = document.getElementById("need");
+
+  // 上次输入的需求，刷新后仍然预填
+  try {
+    var lastNeed = localStorage.getItem("dianxuan-last-need");
+    if (lastNeed) needEl.value = lastNeed;
+  } catch (e) {}
+
   document.querySelectorAll(".tag").forEach(function (tag) {
     tag.addEventListener("click", function () {
       input.value = tag.textContent.trim();
@@ -358,20 +454,43 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.6;max-width:320px}
     });
   });
 
-  // 搜索（演示版：提示 + 滚动到品类）
-  document.getElementById("searchForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    toast("选型匹配功能开发中，先下方品类看看 ↓");
-    document.getElementById("categories").scrollIntoView({ behavior: "smooth" });
+  document.querySelectorAll(".chip").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      input.value = "帮我选型：" + chip.textContent.trim();
+      document.getElementById("top").scrollIntoView({ behavior: "smooth" });
+      toast("已填入搜索框，点「帮我选型」继续");
+    });
   });
 
-  // 询价表单（演示版：提示并清空）
+  document.getElementById("searchForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var q = input.value.trim();
+    if (!q) { toast("先说说你的场景，比如：200 平餐厅后厨制冷设备"); return; }
+    try { localStorage.setItem("dianxuan-last-need", q); } catch (err) {}
+    if (!needEl.value) needEl.value = q;
+    toast("需求已记录！留下联系方式，上线后第一时间为你匹配方案");
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  });
+
+  /* ---------- 导航 CTA ---------- */
+  document.getElementById("btn-consult").addEventListener("click", function () {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  });
+
+  /* ---------- 攻略占位（正式文章上线前） ---------- */
+  document.querySelectorAll(".g-link").forEach(function (b) {
+    b.addEventListener("click", function () { toast("攻略写作中，敬请期待"); });
+  });
+
+  /* ---------- 询价表单（演示版） ---------- */
   document.getElementById("inqForm").addEventListener("submit", function (e) {
     e.preventDefault();
     toast("需求已收到（演示版，正式上线后自动分发给经销商）");
     e.target.reset();
+    try { localStorage.removeItem("dianxuan-last-need"); } catch (err) {}
   });
 })();
 </script>
 </body>
 </html>
+
