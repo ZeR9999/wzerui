@@ -163,6 +163,13 @@ td.strong{font-weight:700;color:var(--text);white-space:nowrap}
 @media (max-width:820px){.contact-box{grid-template-columns:1fr;gap:28px;padding:28px}}
 .contact-box h2{font-size:25px;letter-spacing:-.4px;margin-bottom:10px}
 .contact-box .lead{color:var(--text2);font-size:14px;margin-bottom:18px}
+.form-card{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:center}
+.form-card h3{font-size:18px;margin-bottom:10px;letter-spacing:-.2px}
+.form-card p{font-size:13.5px;color:var(--text2);margin-bottom:14px;line-height:1.7}
+.form-card b{color:var(--text)}
+.btn-link{display:block;text-align:center;background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px;border-radius:12px;transition:opacity .2s,transform .15s}
+.btn-link:hover{opacity:.92}
+.btn-link:active{transform:scale(.99)}
 .contact-list{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text2)}
 .contact-list li{display:flex;gap:10px;align-items:flex-start}
 .contact-list .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0}
@@ -173,6 +180,7 @@ td.strong{font-weight:700;color:var(--text);white-space:nowrap}
 .btn{width:100%;background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s,transform .15s}
 .btn:hover{opacity:.92}
 .btn:active{transform:scale(.99)}
+.btn:disabled{opacity:.6;cursor:default}
 .form-note{font-size:12px;color:var(--text2);margin-top:10px;text-align:center}
 
 /* ============ 页脚 ============ */
@@ -261,7 +269,7 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.7;max-width:340px}
     toastEl.textContent = msg;
     toastEl.classList.add("show");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2400);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2600);
   }
   var root = document.documentElement;
   function applyTheme(t) {
@@ -295,15 +303,10 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.7;max-width:340px}
     e.preventDefault();
     var q = document.getElementById("searchInput").value.trim();
     if (!q) { toast("先说说你的场景，比如：200 平餐厅后厨制冷设备"); return; }
-    toast("需求已记录！滚动到页面底部「需求咨询」留下联系方式");
+    toast("需求已记录！滚动到页面底部「需求咨询」填写表单");
     document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
   });
-  var inq = document.getElementById("inqForm");
-  if (inq) inq.addEventListener("submit", function (e) {
-    e.preventDefault();
-    toast("需求已收到（演示版，正式上线后自动分发给经销商）");
-    e.target.reset();
-  });
+
   var topBtn = document.getElementById("topbtn");
   if (topBtn) {
     window.addEventListener("scroll", function () {

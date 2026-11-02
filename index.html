@@ -163,6 +163,13 @@ td.strong{font-weight:700;color:var(--text);white-space:nowrap}
 @media (max-width:820px){.contact-box{grid-template-columns:1fr;gap:28px;padding:28px}}
 .contact-box h2{font-size:25px;letter-spacing:-.4px;margin-bottom:10px}
 .contact-box .lead{color:var(--text2);font-size:14px;margin-bottom:18px}
+.form-card{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:center}
+.form-card h3{font-size:18px;margin-bottom:10px;letter-spacing:-.2px}
+.form-card p{font-size:13.5px;color:var(--text2);margin-bottom:14px;line-height:1.7}
+.form-card b{color:var(--text)}
+.btn-link{display:block;text-align:center;background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px;border-radius:12px;transition:opacity .2s,transform .15s}
+.btn-link:hover{opacity:.92}
+.btn-link:active{transform:scale(.99)}
 .contact-list{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text2)}
 .contact-list li{display:flex;gap:10px;align-items:flex-start}
 .contact-list .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0}
@@ -173,6 +180,7 @@ td.strong{font-weight:700;color:var(--text);white-space:nowrap}
 .btn{width:100%;background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s,transform .15s}
 .btn:hover{opacity:.92}
 .btn:active{transform:scale(.99)}
+.btn:disabled{opacity:.6;cursor:default}
 .form-note{font-size:12px;color:var(--text2);margin-top:10px;text-align:center}
 
 /* ============ 页脚 ============ */
@@ -219,12 +227,11 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.7;max-width:340px}
     <h1>按需求找设备<br><em>选型不再靠猜</em></h1>
     <p>不知道买什么、参数看不懂、品牌挑花眼？从个人家用到工厂车间，一站找到合适的电器设备——每个产品都有价格、用途、优缺点和横纵对比。</p>
     <form class="search" id="searchForm" autocomplete="off">
-      <input id="searchInput" type="text" placeholder="你的场景是？比如：200 平餐厅后厨制冷设备" aria-label="搜索场景">
+      <input id="searchInput" type="text" placeholder="" aria-label="搜索场景">
       <button type="submit">帮我选型</button>
     </form>
-    <p class="search-hint">也可以直接看产品：家用 4 款 · 工业 3 款 · 商业 3 款</p>
     <div class="hero-stats">
-      <div class="stat"><b>10 款</b><span>产品详情页</span></div>
+      <div class="stat"><b>30 款</b><span>产品详情页</span></div>
       <div class="stat"><b>3 大</b><span>使用场景板块</span></div>
       <div class="stat"><b>20+</b><span>覆盖品类</span></div>
       <div class="stat"><b>持续更新</b><span>选型内容与产品库</span></div>
@@ -248,9 +255,9 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.7;max-width:340px}
     <div class="sec-head"><div class="kicker">Scenes</div><h2>三大场景品类</h2>
     <p>每个场景一个品类页，进入后查看该品类全部产品与横纵对比。</p></div>
     <div class="grid"><div class="card"><div class="icon" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">📺</div><h3><a href="jiayong.html">家用电器</a></h3>
-            <p>买房装修、旧机换新——按户型、面积和预算，一步到位选到性价比最高的家用电器。</p><a class="more" href="p-kongqineng.html">空气能热水器 →</a><a class="more" href="p-bianpin-kongtiao.html">一级能效变频空调（1.5 匹） →</a><a class="more" href="p-duikaimen-bingxiang.html">对开门冰箱（500L+） →</a><a class="more" href="p-guntong-xiyiji.html">滚筒洗衣机（10kg） →</a></div><div class="card"><div class="icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">⚙️</div><h3><a href="gongye.html">工业设备</a></h3>
-            <p>车间、厂房、工地——按工况、功率和电费账，选对能省下真金白银的生产设备。</p><a class="more" href="p-gongye-dafengshan.html">工业大风扇（7.3 米） →</a><a class="more" href="p-luogan-kongyaji.html">螺杆空压机（22kW） →</a><a class="more" href="p-peidian-gui.html">动力配电柜 →</a></div><div class="card"><div class="icon" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)">🏪</div><h3><a href="shangye.html">商业设施</a></h3>
-            <p>开店、办厂、做餐饮——按场地、客流和翻台率，配齐不拖后腿的商用设备。</p><a class="more" href="p-shangyong-lenggui.html">四门商用冷柜（风冷） →</a><a class="more" href="p-shangyong-duolianji.html">商用中央空调（多联机） →</a><a class="more" href="p-shangyong-jingshui.html">商用净水设备 →</a></div></div>
+            <p>买房装修、旧机换新——按户型、面积和预算，一步到位选到性价比最高的家用电器。</p><a class="more" href="p-kongqineng.html">空气能热水器 →</a><a class="more" href="p-bianpin-kongtiao.html">一级能效变频空调（1.5 匹） →</a><a class="more" href="p-duikaimen-bingxiang.html">对开门冰箱（500L+） →</a><a class="more" href="p-guntong-xiyiji.html">滚筒洗衣机（10kg） →</a><a class="more" href="jiayong.html">查看全部 10 款 →</a></div><div class="card"><div class="icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">⚙️</div><h3><a href="gongye.html">工业设备</a></h3>
+            <p>车间、厂房、工地——按工况、功率和电费账，选对能省下真金白银的生产设备。</p><a class="more" href="p-gongye-dafengshan.html">工业大风扇（7.3 米） →</a><a class="more" href="p-luogan-kongyaji.html">螺杆空压机（22kW） →</a><a class="more" href="p-peidian-gui.html">动力配电柜 →</a><a class="more" href="p-fuya-fengji.html">负压风机（车间通风） →</a><a class="more" href="gongye.html">查看全部 10 款 →</a></div><div class="card"><div class="icon" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)">🏪</div><h3><a href="shangye.html">商业设施</a></h3>
+            <p>开店、办厂、做餐饮——按场地、客流和翻台率，配齐不拖后腿的商用设备。</p><a class="more" href="p-shangyong-lenggui.html">四门商用冷柜（风冷） →</a><a class="more" href="p-shangyong-duolianji.html">商用中央空调（多联机） →</a><a class="more" href="p-shangyong-jingshui.html">商用净水设备 →</a><a class="more" href="p-zhibingji.html">商用制冰机 →</a><a class="more" href="shangye.html">查看全部 10 款 →</a></div></div>
   </div>
 </section>
 
@@ -318,7 +325,127 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.7;max-width:340px}
     <div class="brand">沁园（示例）</div><div class="price">8,000 ~ 20,000 元</div>
     <p>餐厅 / 食堂 / 办公楼：直饮水、后厨净水</p>
     <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
-    <a class="more" href="p-shangyong-jingshui.html">查看详情 →</a></div></div>
+    <a class="more" href="p-shangyong-jingshui.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#fee2e2,#fecaca)">
+    <span class="cat-badge">家用电器</span><span>🔥</span><span class="wm">燃气壁挂炉（采暖</span></div>
+    <h3><a href="p-ranqi-bigualu.html">燃气壁挂炉（采暖+热水）</a></h3>
+    <div class="brand">万和（示例）</div><div class="price">5,000 ~ 9,000 元</div>
+    <p>家庭采暖 + 生活热水，无集中供暖地区</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-ranqi-bigualu.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">
+    <span class="cat-badge">家用电器</span><span>🚰</span><span class="wm">家用净水器（RO</span></div>
+    <h3><a href="p-jiayong-jingshuiqi.html">家用净水器（RO 反渗透）</a></h3>
+    <div class="brand">沁园（示例）</div><div class="price">1,500 ~ 3,500 元</div>
+    <p>厨房直饮水，3~5 口之家</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-jiayong-jingshuiqi.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">
+    <span class="cat-badge">家用电器</span><span>🍳</span><span class="wm">集成灶（蒸烤一体</span></div>
+    <h3><a href="p-jichengzao.html">集成灶（蒸烤一体）</a></h3>
+    <div class="brand">火星人（示例）</div><div class="price">8,000 ~ 15,000 元</div>
+    <p>新装厨房：吸排烟 + 灶具 + 蒸烤箱一体</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-jichengzao.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">
+    <span class="cat-badge">家用电器</span><span>🛁</span><span class="wm">储水式电热水器（</span></div>
+    <h3><a href="p-dianreshuiqi.html">储水式电热水器（60L）</a></h3>
+    <div class="brand">海尔（示例）</div><div class="price">1,000 ~ 2,000 元</div>
+    <p>卫生间热水，2~3 人使用</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-dianreshuiqi.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#dbeafe,#c7d2fe)">
+    <span class="cat-badge">家用电器</span><span>🌬️</span><span class="wm">侧吸式吸油烟机</span></div>
+    <h3><a href="p-xiyouyanji.html">侧吸式吸油烟机</a></h3>
+    <div class="brand">方太（示例）</div><div class="price">2,500 ~ 4,500 元</div>
+    <p>中式厨房，重油烟爆炒家庭</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-xiyouyanji.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)">
+    <span class="cat-badge">家用电器</span><span>🍽️</span><span class="wm">嵌入式洗碗机（1</span></div>
+    <h3><a href="p-xiwanji.html">嵌入式洗碗机（12 套）</a></h3>
+    <div class="brand">西门子（示例）</div><div class="price">4,000 ~ 7,000 元</div>
+    <p>3~5 口家庭，每天两顿的碗盘锅具</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-xiwanji.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#e2e8f0,#cbd5e1)">
+    <span class="cat-badge">工业设备</span><span>🌪️</span><span class="wm">负压风机（车间通</span></div>
+    <h3><a href="p-fuya-fengji.html">负压风机（车间通风）</a></h3>
+    <div class="brand">通用（示例）</div><div class="price">1,500 ~ 4,000 元</div>
+    <p>车间换气、高温闷热厂房排风</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-fuya-fengji.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#cffafe,#a5f3fc)">
+    <span class="cat-badge">工业设备</span><span>❄️</span><span class="wm">蒸发式环保空调</span></div>
+    <h3><a href="p-huanbao-kongtiao.html">蒸发式环保空调</a></h3>
+    <div class="brand">澳蓝（示例）</div><div class="price">3,000 ~ 6,000 元</div>
+    <p>车间岗位降温，开放/半开放空间</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-huanbao-kongtiao.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#fef9c3,#fde047)">
+    <span class="cat-badge">工业设备</span><span>🎛️</span><span class="wm">通用变频器（22</span></div>
+    <h3><a href="p-bianpinqi.html">通用变频器（22kW）</a></h3>
+    <div class="brand">英威腾（示例）</div><div class="price">2,000 ~ 4,000 元</div>
+    <p>风机、水泵等三相电机调速节能</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-bianpinqi.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe)">
+    <span class="cat-badge">工业设备</span><span>⚙️</span><span class="wm">三相异步电机（Y</span></div>
+    <h3><a href="p-sanxiang-dianji.html">三相异步电机（YE3 二级能效）</a></h3>
+    <div class="brand">卧龙（示例）</div><div class="price">1,000 ~ 3,000 元</div>
+    <p>通用动力源：泵、风机、输送机等</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-sanxiang-dianji.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#fee2e2,#fecaca)">
+    <span class="cat-badge">工业设备</span><span>🔧</span><span class="wm">逆变直流电焊机</span></div>
+    <h3><a href="p-dianhanji.html">逆变直流电焊机</a></h3>
+    <div class="brand">瑞凌（示例）</div><div class="price">800 ~ 2,000 元</div>
+    <p>车间维修焊接、钢结构作业</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-dianhanji.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">
+    <span class="cat-badge">工业设备</span><span>💨</span><span class="wm">工业除湿机</span></div>
+    <h3><a href="p-gongye-chushiji.html">工业除湿机</a></h3>
+    <div class="brand">松井（示例）</div><div class="price">3,000 ~ 8,000 元</div>
+    <p>仓库、地下室、精密车间控湿防霉</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-gongye-chushiji.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#f1f5f9,#e2e8f0)">
+    <span class="cat-badge">工业设备</span><span>🔌</span><span class="wm">三相大功率稳压器</span></div>
+    <h3><a href="p-wenyagi.html">三相大功率稳压器</a></h3>
+    <div class="brand">德力西（示例）</div><div class="price">4,000 ~ 12,000 元</div>
+    <p>电压不稳厂区：整线设备保护</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-wenyagi.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#cffafe,#a5f3fc)">
+    <span class="cat-badge">商业设施</span><span>🥶</span><span class="wm">商用制冰机</span></div>
+    <h3><a href="p-zhibingji.html">商用制冰机</a></h3>
+    <div class="brand">星崎（示例）</div><div class="price">6,000 ~ 20,000 元</div>
+    <p>奶茶店、餐厅、酒吧制冰</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-zhibingji.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">
+    <span class="cat-badge">商业设施</span><span>☕</span><span class="wm">商用开水器（步进</span></div>
+    <h3><a href="p-kaishuiqi.html">商用开水器（步进式）</a></h3>
+    <div class="brand">吉之美（示例）</div><div class="price">2,000 ~ 5,000 元</div>
+    <p>办公室、餐厅、医院公共饮水</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-kaishuiqi.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe)">
+    <span class="cat-badge">商业设施</span><span>🧼</span><span class="wm">揭盖式商用洗碗机</span></div>
+    <h3><a href="p-shangyong-xiwanji.html">揭盖式商用洗碗机</a></h3>
+    <div class="brand">高达（示例）</div><div class="price">15,000 ~ 30,000 元</div>
+    <p>餐厅后厨批量洗餐具</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-shangyong-xiwanji.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#fee2e2,#fecaca)">
+    <span class="cat-badge">商业设施</span><span>🍲</span><span class="wm">商用电磁炉（双头</span></div>
+    <h3><a href="p-shangyong-diancilu.html">商用电磁炉（双头大功率）</a></h3>
+    <div class="brand">芯德（示例）</div><div class="price">1,500 ~ 3,500 元</div>
+    <p>餐饮后厨炒灶、炖煮</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-shangyong-diancilu.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">
+    <span class="cat-badge">商业设施</span><span>🧊</span><span class="wm">小型组合冷库</span></div>
+    <h3><a href="p-lengku.html">小型组合冷库</a></h3>
+    <div class="brand">通用（示例）</div><div class="price">20,000 ~ 60,000 元</div>
+    <p>食材、药品、生鲜储藏</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-lengku.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)">
+    <span class="cat-badge">商业设施</span><span>🍃</span><span class="wm">商用排烟新风系统</span></div>
+    <h3><a href="p-xinfeng-paiyan.html">商用排烟新风系统</a></h3>
+    <div class="brand">通用（示例）</div><div class="price">8,000 ~ 30,000 元</div>
+    <p>餐厅排烟净化、商场/办公新风</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-xinfeng-paiyan.html">查看详情 →</a></div><div class="card pcard"><div class="pic" style="background:linear-gradient(135deg,#fef9c3,#fde047)">
+    <span class="cat-badge">商业设施</span><span>🔋</span><span class="wm">柴油发电机（30</span></div>
+    <h3><a href="p-chaiyou-fadianji.html">柴油发电机（30kW 移动式）</a></h3>
+    <div class="brand">玉柴（示例）</div><div class="price">35,000 ~ 60,000 元</div>
+    <p>活动演出、工地设备供电、停电应急</p>
+    <div class="chips"><span class="chip">优缺点</span><span class="chip">参数表</span><span class="chip">横纵对比</span></div>
+    <a class="more" href="p-chaiyou-fadianji.html">查看详情 →</a></div></div>
   </div>
 </section>
 
@@ -334,22 +461,12 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.7;max-width:340px}
           <li><span class="dot"></span>商业设施：按场地、客流配设备</li>
         </ul>
       </div>
-      <form id="inqForm" autocomplete="off">
-        <div class="field">
-          <label for="name">你的称呼</label>
-          <input id="name" name="name" type="text" placeholder="比如：王老板 / 李女士" required>
-        </div>
-        <div class="field">
-          <label for="phone">手机或微信</label>
-          <input id="phone" name="phone" type="text" placeholder="方便我们联系你" required>
-        </div>
-        <div class="field">
-          <label for="need">需求描述</label>
-          <textarea id="need" name="need" rows="3" placeholder="比如：5000 平厂房车间太热，想降温，预算 3 万以内" required></textarea>
-        </div>
-        <button class="btn" type="submit">提交需求</button>
-        <p class="form-note">演示版本 · 正式上线后接入后端与经销商网络</p>
-      </form>
+      <div class="form-card">
+        <h3>填写需求，1 个工作日内回复</h3>
+        <p>建议写清楚：<b>使用场景</b>、<b>面积/功率</b>、<b>预算范围</b>，我们按工况匹配方案。</p>
+        <a class="btn-link" href="https://5mmtqmzn.jsjform.com/f/sDavxn" target="_blank" rel="noopener">去填写需求表单 →</a>
+        <p class="form-note">表单由金数据托管 · 提交后微信/邮箱即时提醒我们</p>
+      </div>
     </div>
   </div>
 </section>
@@ -395,7 +512,7 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.7;max-width:340px}
     toastEl.textContent = msg;
     toastEl.classList.add("show");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2400);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2600);
   }
   var root = document.documentElement;
   function applyTheme(t) {
@@ -429,15 +546,10 @@ footer .desc{font-size:13px;color:#64748b;line-height:1.7;max-width:340px}
     e.preventDefault();
     var q = document.getElementById("searchInput").value.trim();
     if (!q) { toast("先说说你的场景，比如：200 平餐厅后厨制冷设备"); return; }
-    toast("需求已记录！滚动到页面底部「需求咨询」留下联系方式");
+    toast("需求已记录！滚动到页面底部「需求咨询」填写表单");
     document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
   });
-  var inq = document.getElementById("inqForm");
-  if (inq) inq.addEventListener("submit", function (e) {
-    e.preventDefault();
-    toast("需求已收到（演示版，正式上线后自动分发给经销商）");
-    e.target.reset();
-  });
+
   var topBtn = document.getElementById("topbtn");
   if (topBtn) {
     window.addEventListener("scroll", function () {
